@@ -8,6 +8,7 @@ import Scanner from "./screens/Scanner";
 import QRScreen from "./screens/QRScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import CreateCard from "./screens/CreateCard";
+import SplashScreen from "react-native-splash-screen";
 
 function App() {
 
@@ -16,6 +17,9 @@ function App() {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
+  useEffect(()=>{
+    SplashScreen.hide()
+  })
 
   function onAuthStateChanged(user) {
     setUser(user);
@@ -28,6 +32,7 @@ function App() {
   }, []);
 
   if (initializing) return null;
+
 
 
   if (!user) {
